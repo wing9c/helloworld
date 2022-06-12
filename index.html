@@ -1,0 +1,335 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- 網頁圖示 --><link rel="icon" href="favicon.ico"  type="image/x-icon">
+<!-- 網頁圖示 --><link rel="Shortcut" href="favicon.ico"  type="image/x-icon">
+<title>第三屆多樂系畢業成果展</title>
+<link rel="stylesheet" type="text/css" href="style.css" />
+<link rel="stylesheet" type="text/css" href="style_block.css" />
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript">
+function tranDD(){
+		$('#TOP dd')
+			.animate({'right':'-1000'},0)
+			.animate({'right':'2000'},20000);
+		window.setTimeout('tranDD()',100);
+}
+function tranDT(){
+		$('#TOP dt')
+			.animate({'right':'-1000'},0)
+			.animate({'right':'2000'},20000);
+		window.setTimeout('tranDT()',100);
+}
+$(document).ready(function() {
+	$('#TOP dt').animate({'right':'-1000'},0);
+	window.setTimeout('tranDD()',0);
+	window.setTimeout('tranDT()',5000);
+	
+	var index = 'HOME divOver';
+	
+	$('h1.title').text($('#menu li a.HOME').attr('class'));
+	$('#menu li a.HOME').addClass('divOver');
+		
+	$('#menu li a').hover(
+		function(){
+			$(this).addClass('divOver');				
+		}, 
+		function(){
+			if (index != $(this).attr('class'))
+				$(this).removeClass('divOver');
+		}
+	);
+	
+	$('#menu li a').mousedown(
+		function() {
+			index = $(this).attr('class');			
+			$('#menu li a').removeClass('divOver');
+			
+			switch($(this).attr('class')) {
+				case 'HOME':
+					$('#content').animate({'margin-top': '0'}, 600);
+					break;
+				case 'ABOUT':
+					$('#content').animate({'margin-top': '-420'}, 600);
+					break;
+				case 'PRODUCTIONS':
+					$('#content').animate({'margin-top': '-840'}, 600);
+					break;
+				case 'CONTACT':
+					$('#content').animate({'margin-top': '-1260'}, 600);
+					break;
+				default:
+			}	
+			
+			$('h1.title').text($(this).attr('class'));
+			$(this).addClass('divOver');
+		}
+	);
+	
+	
+	$('dl.productions dd').hover (
+		function() {
+			$(this).stop().animate( { width:"40%"}, 500, function() {$(this).text($(this).attr('alt'));} );
+		}, function() {
+			$(this).text('');
+			$(this).stop().animate( { width:"8%"}, 500 );
+		}
+	);
+});
+</script>
+<style type="text/css"><!--
+
+body {	
+	font-family: "微軟正黑體";
+	color: #fff;
+	background-color: #333;
+}
+div#TOP {
+	height: 120px;
+	border-bottom: solid #000 4px;
+}
+div#MIDDLE {
+	height: 420px;	
+	background-color: #222;
+}
+div#Container {
+	margin: 0 auto;
+	overflow: hidden;
+	width: 65%;
+	height: 420px;
+	background-color: #555;
+}
+div#BOTTOM {
+	border-top: solid #666 2px;
+}
+div#content {
+	width:100%;	/* 針對子物件繼承設置 */
+	height: 420px;
+}
+h1.title {
+	margin: 40px 20px;
+	position: absolute;
+	font-size: 64px;
+	color: #666;
+}
+div#content h1{
+	border-bottom: solid #999 10px;
+	margin: 0;
+	padding-left: 20px;
+	display: block;
+	height: 60px;
+	line-height: 60px;
+	width: 200px;
+	font-size: 28px;
+	letter-spacing: 4px;
+}
+ul#menu {
+	position: absolute;
+	left: 0;
+	padding: 24px 0;
+	margin: 0;
+	list-style-type: none;
+}
+	ul#menu li a{
+		margin-left: 20px;
+		margin-top: 10px;
+		padding: 0 20px;
+		height: 60px;
+		width: 80px;
+		line-height: 60px;
+		font-size: 16px;
+		letter-spacing: 4px;		
+		text-align: center;
+		display: block;			
+		border-right: solid #111 3px;
+		border-bottom: solid #111 2px;
+		border-top: solid #555 1px;
+		text-decoration: none;
+		color: #bbb;		
+	}
+	ul#menu li a:hover{
+		color: #fff;
+	}
+
+.divOver {
+	background-color: #444;
+}
+div#copyright {
+	margin: 0;
+	padding-top: 16px;
+	padding-right: 110px;
+	color: #aaa;
+	font-size: 10px;
+	text-align: right;
+	height: 80px;
+	widht: 120px;
+}
+div#logo {
+	position: absolute;
+	right: 0;
+	height: 120px;
+	width: 140px;
+	margin-top: -73px;
+	.margin-top: -57px;
+	background-image: url(images/logo.png);
+	.background-image: none;
+	.filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/logo.png', sizingMethod='image');
+}
+
+dl.productions { }
+	dl.productions dt {
+		color: #fff;
+		padding: 0 4px;
+		width: 18px;
+		padding-top: 20px;
+		height: 302px;
+		display: block;
+		float: left;
+		text-align: center;
+		background-color: #444;
+	}
+	dl.productions dd {
+		margin: 0;
+		display: block;
+		float: left;
+		padding-top: 20px;
+		height: 302px;
+		width: 8%;
+	}
+	dl.productions dd.t1	{ background-color: #3b8; }
+	dl.productions dd.t2	{ background-color: #c90; }
+	dl.productions dd.t3	{ background-color: #16a; }
+	dl.productions dd.t4	{ background-color: #c44; }
+	dl.productions dd.t5	{ background-color: #b34; }
+	
+
+div#content.index dl {
+	padding-left: 20px;
+	width: 48%;
+	float: left;
+}
+	div#content.index dl dt {
+		color: #999;
+		font-size: 20px;
+		line-height: 2.4;
+	}
+	div#content.index dl dd {
+		margin: 0;
+		line-height: 2.4;
+		font-size: 14px;
+	}
+		div#content.index dl dd b {
+			font-size: 16px;
+			color: #ccc;
+		}
+
+dd.yodex {
+	width: 30%;
+	float: left;
+	padding-top: 80px;
+	margin-left: 40px;
+}
+	dd.yodex a {
+		text-decoration: none;
+		color: #ccf;
+		font-size: 12px;
+		line-height: 2.0;
+	}
+div#yodex {
+	height: 56px;
+	width: 240px;
+	background-image: url(images/yodex.png);
+	.background-image: none;
+	.filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/yodex.png', sizingMethod='image');
+}
+--></style>
+</head>
+<body>
+	<div id=TOP>
+		<h1 class=title></h1>		
+			<dl class=width>
+			<dd class=a1></dd>
+			<dd class=a2></dd>
+			<dd class=a3></dd>
+			<dd class=a4></dd>
+			<dd class=a5></dd>
+			<dd class=a6></dd>
+			<dd class=a7></dd>
+			<dd class=a8></dd>
+			<dd class=a9></dd>
+			<dd class=a0></dd>
+			<dt class=a1></dt>
+			<dt class=a2></dt>
+			<dt class=a3></dt>
+			<dt class=a4></dt>
+			<dt class=a5></dt>
+			<dt class=a6></dt>
+			<dt class=a7></dt>
+			<dt class=a8></dt>
+			<dt class=a9></dt>
+			<dt class=a0></dt>
+		</dl>
+	</div>
+	<div id=MIDDLE>
+		<ul id=menu>
+			<li><a href="#" class=HOME>首頁</a></li>
+			<li><a href="#" class=ABOUT>製作團隊</a></li>
+			<li><a href="#" class=PRODUCTIONS>專題介紹</a></li>
+			<li><a href="#" class=CONTACT>聯絡我們</a></li>
+		</ul>
+		
+		<div id=Container>
+			<div id=content class=index>
+				<a name="home"></a>
+				<h1>第三屆成果展</h1>
+				
+				<dl>
+					<dt>多媒體與電腦娛樂科學系</dt>
+					<dd>
+						在南台科技大學辛苦了四年，終於要畢業了。<br />
+						在這次畢業專題製作中，我們卯足了全力挑戰各種業界的新技術，製作出獨一無二的遊戲。雖然在遊戲完整度上，還稱不算是成熟，但是大家都盡了自己的全力，在遊戲互動設計這個領域畫上漂亮的一筆。<br />
+						歡迎大家來<b>「新一代設計展」</b>參觀我們的展出，絕對讓您盡興而歸。<br />
+					</dd>
+				</dl>
+				<dd class=yodex>
+				<a href="http://yodex.boco.com.tw/" target="_blank"><div id=yodex></div></a><br />
+				<a href="http://yodex.boco.com.tw/" target="_blank">【新一代設計展】官方網站</a><br />
+				<a href="http://s1.boco.com.tw/twdm_inet/block/file/getfile.aspx?pname=wnju_20100325182020&lname=%E4%B8%96%E8%B2%BF%E4%B8%80%E9%A4%A8%E6%94%A4%E4%BD%8D%E7%B7%A8%E8%99%9F%E6%9B%B4%E5%8B%95990322.jpg&ContentType=image/pjpeg&fPath=C:\Inetpub\wwwroot\inet_files\img\&download=n" target="_blank">
+					【展場配置圖】　南台科大位於D6區
+				</a>
+				</dd>
+			</div>
+			
+			<div id=content class=about>
+				<a name="about"></a>
+				<h1>製作團隊</h1>
+			</div>
+			
+			<div id=content class=intro>
+				<a name="productions"></a>
+				<h1>專題介紹</h1>
+				<dl class=productions>					
+					<dt>晃</dt><dd class=t1 alt="這是一個超級「晃」的星球，可愛的美術風格加上豐富的遊戲內容，絕對會讓你愛不釋手。"></dd>					
+					<dt>貪　婪</dt><dd class=t2 alt="你敢正視你的「貪婪」嗎？在這裡你可以毫無受限地發揮貪婪的極致、成為真正的霸主！"></dd>					
+					<dt>Ｃｒａｚｙｐｏｔ</dt><dd class=t3 alt="超可愛、超流暢、超有趣的遊戲內容，在「Crazypot」裡你都可以盡情地享受到！"></dd>
+					<dt>Ｂｏｎ啾</dt><dd class=t4 alt="「Bon～～啾～」。這是一個豐富、活潑、好玩的遊戲，絕對會讓你一玩再玩沒辦法停止！"></dd>	
+					<dt>暮　光　征　戰</dt><dd class=t5 alt="想要挑戰自己嗎？唯美精緻的遊戲畫面、易上手的操作和有趣的任務，都在「暮光征戰」！"></dd>
+				</dl>
+			</div>
+			
+			<div id=content class=contact>
+				<a name="contact"></a>
+				<h1>聯絡我們</h1>
+			</div>
+		</div>
+	</div>
+	
+	<div id=BOTTOM>
+		<div id=copyright>
+			copyright 2010 -Design by <div id=logo></div>
+		</div>
+		
+	</div>
+</body>
+</html>
